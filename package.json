@@ -1,0 +1,27 @@
+{
+  "name": "shuffle",
+  "version": "0.1.0",
+  "description": "Clean app kata. Investigates card shuffling, data structures and algorithms.",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha ./tests/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Benxamin/shuffle.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "shuffle"
+  ],
+  "author": "Benjamin Bertrand",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Benxamin/shuffle/issues"
+  },
+  "homepage": "https://github.com/Benxamin/shuffle#readme"
+}
