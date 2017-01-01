@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha ./tests/*"
+    "start": "node app.js",
+    "test": "tap ./tests/*"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,6 @@
   },
   "homepage": "https://github.com/Benxamin/shuffle#readme",
   "devDependencies": {
-    "mocha": "^3.2.0"
+    "tap": "^8.0.1"
   }
 }
