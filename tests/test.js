@@ -20,18 +20,29 @@ tap.test('Deck', function(t) {
 
 // Test the cut
 tap.test('Cut', function(t) {
-	t.ok(shuffle.cut(true) === 'Parameter passed into Cut is not an Array!');
-	t.ok(shuffle.cut(123) === 'Parameter passed into Cut is not an Array!');
-	t.ok(shuffle.cut('foo') === 'Parameter passed into Cut is not an Array!');
-	t.ok(shuffle.cut({}) === 'Parameter passed into Cut is not an Array!');
-	t.ok(shuffle.cut(null) === 'Parameter passed into Cut is not an Array!');
-	t.ok(shuffle.cut(undefined) === 'Parameter passed into Cut is not an Array!');
 
-	// var d = new Deck();
-	// var cutDeck = shuffle.cut(d);
-	// console.log('cutDeck', cutDeck.length);
+	// Not array
+	t.ok(shuffle.cut(true) === 'Parameter passed into Cut is not an Array!', 'cut(Boolean)');
+	t.ok(shuffle.cut(123) === 'Parameter passed into Cut is not an Array!',  'cut(Number)');
+	t.ok(shuffle.cut('foo') === 'Parameter passed into Cut is not an Array!','cut(String)');
+	t.ok(shuffle.cut({}) === 'Parameter passed into Cut is not an Array!',   'cut(Object)');
+	t.ok(shuffle.cut(null) === 'Parameter passed into Cut is not an Array!', 'cut(Null)');
+	t.ok(shuffle.cut(undefined) === 'Parameter passed into Cut is not an Array!', 'cut(Undefined)');
 
+	// Too small
+	t.ok(shuffle.cut([]) === 'Deck passed into Cut is too small to split!', 'cut([empty])');
+	t.ok(shuffle.cut(['foo']) === 'Deck passed into Cut is too small to split!', 'cut[1]');
 
-	// t.ok(cutDeck.length === 2);
+	// Not even
+	var cutDeck3Items = shuffle.cut(['foo', 'bar', 'baz']);
+	t.ok(cutDeck3Items.left.length === 2, 'Uneven left side (2)');
+	t.ok(cutDeck3Items.right.length === 1, 'Uneven right side (1)');
+	t.same(cutDeck3Items, { left: [ 'foo', 'bar' ], right: [ 'baz' ] }, 'Uneven objects are the same');
+
+	var d = new Deck();
+	var cutDeck52Items = shuffle.cut(d);
+	t.ok(cutDeck52Items.left.length === 26, 'Left cut length is 26');
+	t.ok(cutDeck52Items.right.length === 26, 'Right cut length is 26');
+
 	t.end();
 });
