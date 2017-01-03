@@ -27,8 +27,8 @@ efficient.
 We will track our progress with timing.  We will start with the naive
 implementation and work from there. 
 
-## Dynamic Systems
+## Dynamical Systems
 
 Question: if one perfectly shuffles a deck of cards (providing the cut is
-equal, left side always goes first, and each card alternates into the pile)
+equal, left side always goes first, and each card alternates into the pile, i.e.: _not random_)
 repeatedly, would the cards ever get back to the original ordered deck?
