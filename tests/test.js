@@ -49,6 +49,17 @@ tap.test('Cut', function(t) {
 });
 
 // Test the riffle
+tap.test('Riffle (parameters 1)', function(t) {
+	t.ok(shuffle.riffle(false,[]) === 'leftDeck passed into Shuffle is not an Array!');
+	t.end();
+});
+
+tap.test('Riffle (parameters 2)', function(t) {
+	t.ok(shuffle.riffle([], false) === 'rightDeck passed into Shuffle is not an Array!');
+	t.end();
+});
+
+
 tap.test('Riffle (even)', function(t) {
 	var numbers = [1,2,3];
 	var letters = ['a','b','c'];
