@@ -4,7 +4,21 @@ A clean coding kata.
 
 The purpose of this exercise is to investigate card shuffling, and thereby 
 demonstrate pure functional programming, gain practice with data structures,
-algorithms, and dynamic systems.
+algorithms, and dynamic systems. We do not initially consider randomness, 
+and will evolve towards it.
+
+## Dependencies
+
+- NodeJS
+- NPM
+
+## Installation
+
+`npm install`
+
+## Tests
+
+`npm test`
 
 ## Pure Functional Programming
 
