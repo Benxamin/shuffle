@@ -37,12 +37,30 @@ tap.test('Cut', function(t) {
 	var cutDeck3Items = shuffle.cut(['foo', 'bar', 'baz']);
 	t.ok(cutDeck3Items.left.length === 2, 'Uneven left side (2)');
 	t.ok(cutDeck3Items.right.length === 1, 'Uneven right side (1)');
-	t.same(cutDeck3Items, { left: [ 'foo', 'bar' ], right: [ 'baz' ] }, 'Uneven objects are the same');
+	t.same(cutDeck3Items, { left: [ 'foo', 'bar' ], right: [ 'baz' ] }, 'Uneven decks are split left');
 
+	// Even
 	var d = new Deck();
 	var cutDeck52Items = shuffle.cut(d);
 	t.ok(cutDeck52Items.left.length === 26, 'Left cut length is 26');
 	t.ok(cutDeck52Items.right.length === 26, 'Right cut length is 26');
 
 	t.end();
+});
+
+// Test the riffle
+tap.test('Riffle (even)', function(t) {
+	var numbers = [1,2,3];
+	var letters = ['a','b','c'];
+	var shuffled = shuffle.riffle(numbers, letters);
+	t.same(shuffled, [1,'a',2,'b',3,'c'], 'Letters & numbers should be shuffled');
+	t.end()
+});
+
+tap.test('Riffle (uneven)', function(t) {
+	var numbers = [1,2,3,4,5];
+	var letters = ['a','b','c','d'];
+	var shuffled = shuffle.riffle(numbers, letters);
+	t.same(shuffled, [1,'a',2,'b',3,'c',4,'d',5], 'Letters & numbers should be shuffled');
+	t.end()
 });

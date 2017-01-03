@@ -22,6 +22,38 @@ var container  = {
 			'left': deck.slice(0, midpoint),
 			'right': deck.slice(midpoint, deck.length)
 		};
+	},
+	riffle: function(leftDeck, rightDeck) {
+		if (!Array.isArray(leftDeck)) {
+			return this.warning('leftDeck passed into Shuffle is not an Array!');
+		}
+		if (!Array.isArray(rightDeck)) {
+			return this.warning('rightDeck passed into Shuffle is not an Array!');
+		}
+		if (leftDeck.length != rightDeck.length) {
+			return this.stack_riffle(leftDeck, rightDeck);
+		}
+		return this.equal_riffle(leftDeck, rightDeck);
+	},
+	equal_riffle: function(leftDeck, rightDeck) {
+		var shuffledDeck = [];
+		var l = leftDeck.length;
+		for (var i = 0; i < l; i++) {
+			shuffledDeck.push(leftDeck[i]);
+			shuffledDeck.push(rightDeck[i]);
+		};
+		return shuffledDeck;
+	},
+	stack_riffle: function(leftDeck, rightDeck) {
+		var deck = [];
+		var stack = []
+		var shortestLength = (leftDeck.length < rightDeck.length) ? leftDeck.length : rightDeck.length;
+		for (var j = 0; j < shortestLength; j++) {
+			deck.push(leftDeck[j]);
+			deck.push(rightDeck[j]);
+		}
+		stack = leftDeck[shortestLength] ? leftDeck.splice(shortestLength, leftDeck.length) : rightDeck.splice(shortestLength, rightDeck.length);
+		return deck.concat(stack);
 	}
 };
 
