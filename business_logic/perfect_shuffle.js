@@ -54,6 +54,10 @@ var container  = {
 		}
 		stack = leftDeck[shortestLength] ? leftDeck.splice(shortestLength, leftDeck.length) : rightDeck.splice(shortestLength, rightDeck.length);
 		return deck.concat(stack);
+	},
+	cutAndShuffle: function(someDeck) {
+		var cutDeck = this.cut(someDeck);
+		return this.riffle(cutDeck.left, cutDeck.right);
 	}
 };
 

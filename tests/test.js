@@ -75,3 +75,10 @@ tap.test('Riffle (uneven)', function(t) {
 	t.same(shuffled, [1,'a',2,'b',3,'c',4,'d',5], 'Letters & numbers should be shuffled');
 	t.end()
 });
+
+// Test the cutAndShuffle
+tap.test('cutAndShuffle ()', function(t) {
+	var marvel = ['Spiderman', 'X-men', 'Hulk', 'Captain America', 'Dr. Doom', 'Thor'];
+	t.same(shuffle.cutAndShuffle(marvel), ['Spiderman', 'Captain America', 'X-men', 'Dr. Doom', 'Hulk', 'Thor']);
+	t.end()
+});
